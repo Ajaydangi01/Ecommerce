@@ -1,0 +1,123 @@
+swagger: "2.0"
+info:
+title: This is a swagger
+description: This is description about the swagger
+version: 1.0
+contact:
+email: Ajaydangi.thoughtwin@gmail.com
+liscence:
+name: Apache 2.0
+url: "http://apache.org/"
+servers:
+- url : "http://localhost:8000/"
+description: This is a local server
+
+paths :
+   /register :  
+     post:
+      summary: User signup
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            propertries:
+              firstname:
+                type:string
+              lastlame:
+                type:string
+              number:
+                type:integer
+              email:
+                type:String
+              password:
+                type:String
+            example:
+              firstname : Sourabh
+              lastname : Lodhi
+              number : 7896541230
+              email : sourabhlodhi.thoughtwin@gmail.com
+              password : password
+      responses: 
+        200:
+         description: OK
+        409:
+          description: Bad request
+
+   /confirmEmail/{token}:
+     get:
+      summary: Token verify
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: token
+          schema:
+            type: string
+            propertries:
+              token:
+                type: string
+      responses: 
+       200: 
+        description: Valid user , Login successfully
+       400:
+        description: Bad request
+
+   /login:
+     post:
+      summary: User login
+      produces:
+        - application/json
+      consumes : 
+        - application/json
+      parameters:
+          - in : body
+            name: body
+            schema:
+              type: object
+              propertries:
+                email:
+                  type: string
+                password:
+                  type: string
+              example:
+                email : sourabhlodhi.thoughtwin@gmail.com
+                password : password
+      responses:
+        200:
+          description: Login successfully
+        400:
+          description: Bad request
+
+  #  /tokengenerate:
+  #     post:
+  #       summary: For generate token
+  #       produces: 
+  #         - application/json
+  #       consumes:
+  #         - application/json
+  #       parameters:
+  #         - in : body
+  #           name: body
+  #           schema:
+  #             type: object
+  #             propertries:
+  #               email:
+  #                 type: string
+  #               password:
+  #                 type: string
+  #             example:
+  #               email : sourabhlodhi.thoughtwin@gmail.com
+  #             password : password
+  #       responses:
+  #         200:
+  #           description : Mail sent successfully
+  #         400:
+  #           description : Bad request
+    
